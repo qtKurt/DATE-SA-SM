@@ -22,3 +22,17 @@ nobtn.addEventListener("mouseover", () => {
     nobtn.style.left = randomX + "px";
     nobtn.style.top = randomY + "px";
 });
+
+// Adjust the button position when the window is resized
+window.addEventListener("resize", () => {
+    const nobtnRect = nobtn.getBoundingClientRect();
+    const maxX = window.innerWidth - nobtnRect.width;
+    const maxY = window.innerHeight - nobtnRect.height;
+
+    // Ensure the button stays within the visible area
+    const randomX = Math.min(Math.floor(Math.random() * maxX), maxX);
+    const randomY = Math.min(Math.floor(Math.random() * maxY), maxY);
+
+    nobtn.style.left = randomX + "px";
+    nobtn.style.top = randomY + "px";
+});
